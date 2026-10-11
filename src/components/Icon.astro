@@ -1,0 +1,40 @@
+---
+/*
+ * Small line-icon set in the logo's style: 2px rounded strokes, no fills.
+ * Add new icons to `paths` as 24x24 path data.
+ */
+const paths = {
+  architecture: 'M4 20V9l8-5 8 5v11M9 20v-6h6v6M4 20h16',
+  framework: 'M9 6h11M9 12h11M9 18h11M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2',
+  code: 'M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14',
+  cloud: 'M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.1 4.5 4.5 0 0 0 7 18Z',
+  shield: 'M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6l7-3Zm-3 9l2 2 4-4',
+  arrowRight: 'M5 12h14M13 6l6 6-6 6',
+  mail: 'M4 6h16v12H4zM4 7l8 6 8-6',
+  linkedin: 'M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7M4 4h16v16H4z',
+} as const;
+
+interface Props {
+  name: keyof typeof paths;
+  size?: number;
+  label?: string;
+}
+
+const { name, size = 24, label } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+>
+  <path d={paths[name]}></path>
+</svg>

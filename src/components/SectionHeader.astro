@@ -1,0 +1,36 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  /** Heading level; the visual size stays the same. */
+  as?: 'h1' | 'h2' | 'h3';
+  align?: 'start' | 'center';
+}
+
+const { eyebrow, title, as: Heading = 'h2', align = 'start' } = Astro.props;
+---
+
+<header class:list={['section-header', `section-header--${align}`]}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <Heading class="section-header__title">{title}</Heading>
+  {Astro.slots.has('default') && <div class="lead"><slot /></div>}
+</header>
+
+<style>
+  .section-header {
+    display: grid;
+    gap: var(--space-3);
+    margin-bottom: var(--space-10);
+    max-width: var(--measure);
+  }
+
+  .section-header--center {
+    margin-inline: auto;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .section-header__title {
+    font-size: var(--text-3xl);
+  }
+</style>

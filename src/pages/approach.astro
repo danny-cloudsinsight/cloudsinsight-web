@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import { approach } from '../data/site';
+---
+
+<BaseLayout
+  title="Approach"
+  description="How CloudsInSight works: assess, design, implement and enable, with knowledge transfer built in."
+>
+  <Section tone="tint">
+    <SectionHeader as="h1" eyebrow="Approach" title="Assess, design, implement, enable">
+      Every engagement follows the same four stages. Not every engagement needs all four, but each
+      stage ends with something concrete your team keeps.
+    </SectionHeader>
+  </Section>
+
+  <Section>
+    <ProcessSteps steps={approach} />
+  </Section>
+
+  <Section tone="subtle">
+    <SectionHeader title="What each stage delivers" />
+    <dl class="outputs">
+      {
+        approach.map((step) => (
+          <div>
+            <dt>{step.title}</dt>
+            <dd>{step.output}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </Section>
+
+  <Section>
+    <SectionHeader title="Architecture and implementation together">
+      Designs that are never built tend to stay theoretical, and builds without a design tend to
+      drift. CloudsInSight does both, so the architecture is tested by implementing it and the
+      implementation follows a design that is written down.
+    </SectionHeader>
+    <SectionHeader title="Knowledge transfer, not dependency">
+      Your team works alongside the engagement from the start. Decisions are documented, code is
+      reviewed together, and the hand-over is planned rather than left to the last week.
+    </SectionHeader>
+  </Section>
+
+  <Section tone="brand">
+    <SectionHeader title="Want to talk about where you are now?" />
+    <Button href="/contact" variant="inverse" size="lg">Get in touch</Button>
+  </Section>
+</BaseLayout>
+
+<style>
+  .outputs {
+    display: grid;
+    gap: var(--space-6);
+    max-width: var(--measure);
+  }
+
+  .outputs dt {
+    font-weight: var(--weight-semibold);
+  }
+
+  .outputs dd {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+</style>

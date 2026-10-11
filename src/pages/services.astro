@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import { services } from '../data/site';
+---
+
+<BaseLayout
+  title="Services"
+  description="Azure Cloud Architecture, Cloud Adoption Framework assessments and DevOps & Infrastructure as Code."
+>
+  <Section tone="tint">
+    <SectionHeader as="h1" eyebrow="Services" title="Azure architecture, CAF and automation">
+      Three service areas that work on their own or together. Each engagement is scoped to what
+      your organisation needs, from a focused review to a full platform build.
+    </SectionHeader>
+  </Section>
+
+  {
+    services.map((s, i) => (
+      <Section id={s.id} tone={i % 2 === 1 ? 'subtle' : 'default'}>
+        <div class="service">
+          <Icon name={s.icon} size={32} />
+          <h2>{s.title}</h2>
+          <p class="lead">{s.intro}</p>
+          <ul class="service__topics">
+            {s.topics.map((t) => (
+              <li>{t}</li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+    ))
+  }
+
+  <Section tone="brand">
+    <SectionHeader title="Not sure which one you need?">
+      Describe the situation and you will get an honest view of where to start.
+    </SectionHeader>
+    <Button href="/contact" variant="inverse" size="lg">Get in touch</Button>
+  </Section>
+</BaseLayout>
+
+<style>
+  .service {
+    display: grid;
+    gap: var(--space-4);
+    color: var(--color-accent);
+  }
+
+  .service h2,
+  .service p,
+  .service ul {
+    color: var(--color-text);
+  }
+
+  .service .lead {
+    color: var(--color-text-muted);
+  }
+
+  .service__topics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: var(--space-2) var(--space-8);
+    margin-top: var(--space-2);
+    padding-left: var(--space-5);
+  }
+
+  .service__topics li::marker {
+    color: var(--teal-300);
+  }
+</style>

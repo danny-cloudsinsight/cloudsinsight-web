@@ -110,8 +110,8 @@ Future:
 
 Tasks:
 
-* [ ] Confirm initial navigation structure.
-* [ ] Determine whether Tools should already appear in v1 navigation.
+* [x] Confirm initial navigation structure.
+* [x] Determine whether Tools should already appear in v1 navigation.
 * [ ] Define internal linking between services, articles and future tools.
 
 ## Home
@@ -181,9 +181,9 @@ Tasks:
 
 ## Contact
 
-* [ ] Provide email contact.
+* [x] Provide email contact.
 * [ ] Link LinkedIn profile.
-* [ ] Decide whether v1 needs a contact form.
+* [x] Decide whether v1 needs a contact form.
 * [ ] Define the main contact call to action.
 
 ---
@@ -229,16 +229,16 @@ Potential initial topics already discussed:
 * [ ] Initialize Astro project.
 * [ ] Configure Markdown/MDX content.
 * [ ] Establish source structure.
-* [ ] Implement reusable layouts.
-* [ ] Implement navigation.
+* [x] Implement reusable layouts.
+* [x] Implement navigation.
 * [ ] Implement responsive design.
-* [ ] Implement Home page.
-* [ ] Implement Services page.
-* [ ] Implement Approach page.
-* [ ] Implement About page.
-* [ ] Implement Contact page.
+* [x] Implement Home page.
+* [x] Implement Services page.
+* [x] Implement Approach page.
+* [x] Implement About page.
+* [x] Implement Contact page.
 * [ ] Implement Blog.
-* [ ] Add 404 page.
+* [x] Add 404 page.
 
 ## Design
 

@@ -9,6 +9,7 @@ import Callout from '../components/Callout.astro';
 import ProcessSteps from '../components/ProcessSteps.astro';
 import Icon from '../components/Icon.astro';
 import Logo from '../components/Logo.astro';
+import { approach } from '../data/site';
 
 const brand = [
   { name: 'Sky 400', token: '--sky-400', hex: '#5CB8FF', note: 'Logo blue. Backgrounds with navy text.' },
@@ -38,12 +39,6 @@ const typeScale = [
 
 const spaces = ['1', '2', '3', '4', '6', '8', '12', '16', '24'];
 
-const approach = [
-  { title: 'Assess', description: 'Understand the current estate, constraints and risks against CAF and WAF.' },
-  { title: 'Design', description: 'Architecture and decisions that are explainable, with trade-offs written down.' },
-  { title: 'Implement', description: 'Landing zones, pipelines and Infrastructure as Code, built alongside your team.' },
-  { title: 'Enable', description: 'Knowledge transfer so your team owns the platform, not a consultant.' },
-];
 ---
 
 <BaseLayout title="Design system" description="CloudsInSight design tokens and components." noindex>

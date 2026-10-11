@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+import Icon from '../components/Icon.astro';
+import { company } from '../data/site';
+---
+
+<BaseLayout title="Contact" description="Get in touch with CloudsInSight about Azure architecture, CAF or DevOps.">
+  <Section tone="tint">
+    <SectionHeader as="h1" eyebrow="Contact" title="Get in touch">
+      A short description of your situation is enough to start: what you have today, what you want
+      to achieve, and any deadline.
+    </SectionHeader>
+    <Button href={`mailto:${company.email}`} size="lg">
+      <Icon name="mail" size={20} />
+      {company.email}
+    </Button>
+  </Section>
+</BaseLayout>

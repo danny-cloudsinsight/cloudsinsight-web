@@ -1,18 +1,217 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+import Card from '../components/Card.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import Icon from '../components/Icon.astro';
+import { services, approach, certifications } from '../data/site';
+
+const reasons = [
+  {
+    title: 'Azure in depth',
+    text: 'One platform, known well. Recommendations come from hands-on Azure experience, not a generic multi-cloud checklist.',
+  },
+  {
+    title: 'Architecture and implementation',
+    text: 'The person who designs the architecture also builds it in code, so designs stay realistic and nothing gets lost in hand-over.',
+  },
+  {
+    title: 'Enterprise experience',
+    text: 'More than 20 years in IT infrastructure projects, much of it in large enterprise environments with real governance and compliance constraints.',
+  },
+  {
+    title: 'Your team owns the result',
+    text: 'Knowledge transfer is part of every engagement. The goal is a platform your team runs confidently, not a dependency on a consultant.',
+  },
+  {
+    title: 'Independent advice',
+    text: 'No licences or managed services to sell. Advice is based on what fits your organisation.',
+  },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>CloudsInSight</title>
-  </head>
+<BaseLayout description="Azure architecture, Cloud Adoption Framework and DevOps consultancy. Secure, scalable and well-governed Azure environments through architecture and automation.">
+  <Section tone="tint" width="wide">
+    <div class="hero__inner">
+      <p class="eyebrow">Azure architecture · Cloud Adoption Framework · DevOps</p>
+      <h1>Building secure, scalable and well-governed Azure environments through architecture and automation.</h1>
+      <p class="lead">
+        CloudsInSight is an independent Azure consultancy. It helps organisations design, assess and
+        automate their Azure platform, and leaves their team able to run it.
+      </p>
+      <div class="hero__actions">
+        <Button href="/contact" size="lg">Get in touch</Button>
+        <Button href="/services" size="lg" variant="secondary">See services</Button>
+      </div>
+    </div>
 
-  <body>
-    <main>
-      <h1>CloudsInSight</h1>
-      <p>Azure Cloud Architecture, Cloud Adoption Framework and DevOps.</p>
-      <p>Website coming soon.</p>
-    </main>
-  </body>
-</html>
+    <dl class="facts">
+      <div>
+        <dt>20+ years</dt>
+        <dd>in IT infrastructure projects</dd>
+      </div>
+      <div>
+        <dt>5+ years</dt>
+        <dd>in cloud computing</dd>
+      </div>
+      <div>
+        <dt>3 Microsoft certifications</dt>
+        <dd>including two at Expert level</dd>
+      </div>
+    </dl>
+  </Section>
+
+  <Section width="wide">
+    <SectionHeader eyebrow="Services" title="Three areas, one platform">
+      Engagements can combine these areas: an architecture, an honest assessment of where you stand,
+      and the automation that keeps it consistent.
+    </SectionHeader>
+    <div class="grid">
+      {
+        services.map((s) => (
+          <Card title={s.title} href={`/services#${s.id}`}>
+            <Icon slot="icon" name={s.icon} />
+            <p>{s.summary}</p>
+            <span slot="footer">Read more →</span>
+          </Card>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section tone="subtle" width="wide">
+    <SectionHeader eyebrow="Why CloudsInSight" title="What you can expect" />
+    <ul class="reasons">
+      {
+        reasons.map((r) => (
+          <li>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section width="wide">
+    <SectionHeader eyebrow="Approach" title="Assess, design, implement, enable">
+      A predictable way of working, with something concrete delivered at every stage.
+    </SectionHeader>
+    <ProcessSteps steps={approach} />
+    <p class="section-link">
+      <Button href="/approach" variant="ghost">How an engagement works <Icon name="arrowRight" size={16} /></Button>
+    </p>
+  </Section>
+
+  <Section tone="subtle" width="wide">
+    <SectionHeader eyebrow="Certified" title="Microsoft certified for Azure" />
+    <ul class="certs">
+      {
+        certifications.map((c) => (
+          <li>
+            <span class="certs__exam">Exam {c.exam}</span>
+            <span>Microsoft Certified: {c.name}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section tone="brand">
+    <SectionHeader title="Planning an Azure platform or reviewing the one you have?">
+      Describe where you are and what you want to achieve. You will get a straight answer on whether
+      and how CloudsInSight can help.
+    </SectionHeader>
+    <Button href="/contact" variant="inverse" size="lg">Get in touch</Button>
+  </Section>
+</BaseLayout>
+
+<style>
+  .hero__inner {
+    display: grid;
+    gap: var(--space-4);
+    max-width: 52rem;
+  }
+
+  .hero__inner h1 {
+    margin-block: var(--space-2);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-16);
+    padding-top: var(--space-8);
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  .facts dt {
+    font-size: var(--text-xl);
+    font-weight: var(--weight-bold);
+  }
+
+  .facts dd {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-8) var(--space-10);
+    padding: 0;
+    list-style: none;
+  }
+
+  .reasons li {
+    padding-left: var(--space-4);
+    border-left: 3px solid var(--teal-300);
+  }
+
+  .reasons h3 {
+    margin-bottom: var(--space-2);
+    font-size: var(--text-lg);
+  }
+
+  .reasons p {
+    color: var(--color-text-muted);
+  }
+
+  .section-link {
+    margin-top: var(--space-8);
+  }
+
+  .certs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: var(--space-4);
+    padding: 0;
+    list-style: none;
+  }
+
+  .certs li {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-4) var(--space-6);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-bg);
+  }
+
+  .certs__exam {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-accent);
+  }
+</style>

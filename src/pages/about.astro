@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+import { certifications } from '../data/site';
+---
+
+<BaseLayout
+  title="About"
+  description="CloudsInSight is an independent Azure consultancy built on more than 20 years of IT infrastructure experience."
+>
+  <Section tone="tint">
+    <SectionHeader as="h1" eyebrow="About" title="An independent Azure consultancy">
+      CloudsInSight is a one-person consultancy. The person you talk to first is the person who
+      does the work.
+    </SectionHeader>
+  </Section>
+
+  <Section>
+    <div class="prose">
+      <h2>Background</h2>
+      <p>
+        I have worked on IT infrastructure projects for more than 20 years, much of that time in
+        large enterprise environments, and have focused on cloud computing for more than five.
+        Today that work is centred on Azure: landing zones, governance, the Cloud Adoption
+        Framework and the automation that holds it all together.
+      </p>
+      <h2>How I work</h2>
+      <p>
+        I prefer pragmatic, explainable architecture over clever architecture. Decisions and their
+        trade-offs get written down, infrastructure lives in code, and your team is involved from
+        the start so that it can run the platform without me afterwards.
+      </p>
+      <h2>Certifications</h2>
+      <ul>
+        {certifications.map((c) => (
+          <li>Microsoft Certified: {c.name} (exam {c.exam})</li>
+        ))}
+      </ul>
+    </div>
+  </Section>
+
+  <Section tone="brand">
+    <SectionHeader title="Let's talk about your Azure environment" />
+    <Button href="/contact" variant="inverse" size="lg">Get in touch</Button>
+  </Section>
+</BaseLayout>

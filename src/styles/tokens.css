@@ -74,7 +74,7 @@
 
   --color-link: var(--sky-700);
   --color-link-hover: var(--sky-900);
-  --color-accent: var(--teal-700);
+  --color-accent: var(--teal-800); /* text accent: 5.8:1 or better on every light section background */
   --color-accent-strong: var(--teal-800);
   --color-accent-soft: var(--teal-100);
 

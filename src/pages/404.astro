@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Button from '../components/Button.astro';
+---
+
+<BaseLayout title="Page not found" noindex>
+  <Section>
+    <SectionHeader as="h1" eyebrow="404" title="This page does not exist">
+      The link may be out of date, or the page may have moved.
+    </SectionHeader>
+    <Button href="/">Back to the home page</Button>
+  </Section>
+</BaseLayout>

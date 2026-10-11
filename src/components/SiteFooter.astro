@@ -1,5 +1,6 @@
 ---
 import Logo from './Logo.astro';
+import { company } from '../data/site';
 
 const year = new Date().getFullYear();
 ---
@@ -9,6 +10,7 @@ const year = new Date().getFullYear();
     <div class="site-footer__brand">
       <Logo inverse height={30} />
       <p>Azure architecture, Cloud Adoption Framework and DevOps.</p>
+      <p><a href={`mailto:${company.email}`}>{company.email}</a></p>
     </div>
 
     <nav aria-label="Footer">
@@ -22,7 +24,7 @@ const year = new Date().getFullYear();
     </nav>
   </div>
   <div class="container container--wide site-footer__legal">
-    <p>© {year} CloudsInSight</p>
+    <p>© {year} {company.name} · VAT {company.vat}</p>
   </div>
 </footer>
 

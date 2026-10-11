@@ -31,7 +31,7 @@ Components use semantic tokens (`--color-text`, `--color-action`) rather than pa
 | `--teal-300` | `#60CDDD` | Logo accent. Rules, list markers, step borders |
 | `--navy-900` | `#0B2545` | Body text, footer, inverse sections |
 | `--sky-700` | `#1466AD` | Links and primary buttons |
-| `--teal-700` | `#1C8494` | Eyebrows and accent text |
+| `--teal-800` | `#176A77` | Eyebrows and accent text (`--color-accent`, 5.8:1 or better on all light sections) |
 
 White on `#5CB8FF` is 2.2:1 and fails WCAG, so never put white text on the brand blue. Navy on the brand blue is 7.2:1.
 

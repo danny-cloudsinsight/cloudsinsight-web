@@ -65,8 +65,8 @@ const reasons = [
 
   <Section width="wide">
     <SectionHeader eyebrow="Services" title="Three areas, one platform">
-      Most engagements combine all three: an architecture, an honest assessment against it, and the
-      automation that keeps it that way.
+      Engagements can combine these areas: an architecture, an honest assessment of where you stand,
+      and the automation that keeps it consistent.
     </SectionHeader>
     <div class="grid">
       {
@@ -111,7 +111,7 @@ const reasons = [
       {
         certifications.map((c) => (
           <li>
-            <span class="certs__code">{c.code}</span>
+            <span class="certs__exam">Exam {c.exam}</span>
             <span>Microsoft Certified: {c.name}</span>
           </li>
         ))
@@ -208,7 +208,7 @@ const reasons = [
     background: var(--color-bg);
   }
 
-  .certs__code {
+  .certs__exam {
     font-size: var(--text-sm);
     font-weight: var(--weight-semibold);
     letter-spacing: var(--tracking-wide);

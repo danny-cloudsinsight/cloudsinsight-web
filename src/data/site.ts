@@ -66,7 +66,7 @@ export const services = [
 export const approach = [
   {
     title: 'Assess',
-    description: 'Understand the current estate, constraints and risks against CAF and WAF.',
+    description: 'Understand your Azure environment, its constraints and its readiness as a platform, using CAF guidance to identify gaps and risks.',
     output: 'A written assessment with findings ranked by risk and effort.',
   },
   {
@@ -82,12 +82,12 @@ export const approach = [
   {
     title: 'Enable',
     description: 'Knowledge transfer so your team owns the platform, not a consultant.',
-    output: 'Hand-over sessions, documentation and a team that can run it without help.',
+    output: 'Hand-over sessions and documentation that prepare your team to operate and extend the platform independently.',
   },
 ];
 
 export const certifications = [
-  { code: 'AZ-305', name: 'Azure Solutions Architect Expert' },
-  { code: 'AZ-400', name: 'DevOps Engineer Expert' },
-  { code: 'AZ-104', name: 'Azure Administrator Associate' },
+  { exam: 'AZ-305', name: 'Azure Solutions Architect Expert' },
+  { exam: 'AZ-400', name: 'DevOps Engineer Expert' },
+  { exam: 'AZ-104', name: 'Azure Administrator Associate' },
 ];

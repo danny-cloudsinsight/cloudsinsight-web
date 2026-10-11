@@ -1,0 +1,178 @@
+/*
+ * CloudsInSight design tokens.
+ *
+ * Primitive tokens (palette, scales) are referenced only from this file.
+ * Components and pages use the semantic tokens further down, so a palette
+ * change never requires touching a component.
+ */
+
+:root {
+  /* ------------------------------------------------------------------
+   * Palette
+   * Brand colours come straight from the logo:
+   *   sky-400  #5CB8FF  logo background
+   *   teal-300 #60CDDD  cloud accent stroke
+   * White text on sky-400 is only 2.2:1, so the brand blue is used as a
+   * background with navy text (7.2:1), never behind white text.
+   * ------------------------------------------------------------------ */
+  --sky-50: #eef7ff;
+  --sky-100: #dcefff;
+  --sky-200: #b9e0ff;
+  --sky-300: #8cccff;
+  --sky-400: #5cb8ff;
+  --sky-500: #2f9beb;
+  --sky-600: #1a7fd0;
+  --sky-700: #1466ad;
+  --sky-800: #12518a;
+  --sky-900: #0f3e69;
+
+  --teal-50: #effafb;
+  --teal-100: #ddf5f8;
+  --teal-300: #60cddd;
+  --teal-600: #2aa9bc;
+  --teal-700: #1c8494;
+  --teal-800: #176a77;
+
+  --navy-700: #2b4a73;
+  --navy-800: #16365f;
+  --navy-900: #0b2545;
+  --navy-950: #071a33;
+
+  --slate-50: #f7f9fc;
+  --slate-100: #eef2f7;
+  --slate-200: #dde4ee;
+  --slate-300: #c3cedc;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #4b5b72;
+  --slate-700: #334155;
+
+  --white: #ffffff;
+
+  --green-50: #edf8f1;
+  --green-700: #1e7a46;
+  --amber-50: #fff7e6;
+  --amber-700: #8a5a00;
+  --red-50: #fdeeee;
+  --red-700: #b42323;
+
+  /* ------------------------------------------------------------------
+   * Semantic colours
+   * ------------------------------------------------------------------ */
+  --color-bg: var(--white);
+  --color-bg-subtle: var(--slate-50);
+  --color-bg-tint: var(--sky-50);
+  --color-bg-brand: var(--sky-400);
+  --color-bg-inverse: var(--navy-900);
+
+  --color-text: var(--navy-900);
+  --color-text-muted: var(--slate-600);
+  --color-text-subtle: var(--slate-500);
+  --color-text-inverse: var(--white);
+  --color-text-inverse-muted: var(--slate-300);
+  --color-text-on-brand: var(--navy-900);
+
+  --color-link: var(--sky-700);
+  --color-link-hover: var(--sky-900);
+  --color-accent: var(--teal-700);
+  --color-accent-strong: var(--teal-800);
+  --color-accent-soft: var(--teal-100);
+
+  --color-action: var(--sky-700);
+  --color-action-hover: var(--sky-800);
+  --color-action-text: var(--white);
+
+  --color-border: var(--slate-200);
+  --color-border-strong: var(--slate-300);
+  --color-focus: var(--sky-600);
+
+  --color-info-bg: var(--sky-50);
+  --color-info-fg: var(--sky-800);
+  --color-success-bg: var(--green-50);
+  --color-success-fg: var(--green-700);
+  --color-warning-bg: var(--amber-50);
+  --color-warning-fg: var(--amber-700);
+  --color-danger-bg: var(--red-50);
+  --color-danger-fg: var(--red-700);
+
+  --color-code-bg: var(--navy-950);
+  --color-code-text: var(--slate-100);
+  --color-code-inline-bg: var(--slate-100);
+
+  /* ------------------------------------------------------------------
+   * Typography
+   * Inter for everything, a system monospace for code. The slab serif
+   * stays in the logo only.
+   * ------------------------------------------------------------------ */
+  --font-sans: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  /* Fluid type scale, 360px to 1280px viewport */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.125rem, 1.07rem + 0.25vw, 1.25rem);
+  --text-xl: clamp(1.25rem, 1.15rem + 0.45vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.33rem + 0.75vw, 1.875rem);
+  --text-3xl: clamp(1.75rem, 1.47rem + 1.25vw, 2.5rem);
+  --text-4xl: clamp(2.125rem, 1.65rem + 2.1vw, 3.5rem);
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+
+  --tracking-tight: -0.02em;
+  --tracking-wide: 0.08em;
+
+  --measure: 68ch;
+
+  /* ------------------------------------------------------------------
+   * Space (4px base) and layout
+   * ------------------------------------------------------------------ */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --section-space: clamp(var(--space-12), 6vw, var(--space-24));
+  --gutter: clamp(var(--space-4), 4vw, var(--space-8));
+
+  --container-narrow: 46rem;
+  --container: 72rem;
+  --container-wide: 80rem;
+
+  --header-height: 4.5rem;
+
+  /* ------------------------------------------------------------------
+   * Shape, depth, motion
+   * ------------------------------------------------------------------ */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+
+  --shadow-sm: 0 1px 2px rgb(11 37 69 / 0.06);
+  --shadow-md: 0 2px 4px rgb(11 37 69 / 0.05), 0 8px 24px rgb(11 37 69 / 0.08);
+
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+}

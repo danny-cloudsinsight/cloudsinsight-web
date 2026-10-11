@@ -1,0 +1,181 @@
+---
+import Logo from './Logo.astro';
+import Button from './Button.astro';
+
+const nav = [
+  { href: '/services', label: 'Services' },
+  { href: '/approach', label: 'Approach' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+
+const current = Astro.url.pathname.replace(/\/$/, '');
+const isCurrent = (href: string) => current === href || current.startsWith(`${href}/`);
+---
+
+<header class="site-header">
+  <div class="container container--wide site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="CloudsInSight home">
+      <Logo height={34} />
+    </a>
+
+    <nav class="site-nav" aria-label="Main">
+      <ul class="site-nav__list">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="site-nav__link"
+                aria-current={isCurrent(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <Button href="/contact">Get in touch</Button>
+    </nav>
+
+    <details class="mobile-nav">
+      <summary class="mobile-nav__toggle">
+        <span class="visually-hidden">Menu</span>
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </summary>
+      <nav class="mobile-nav__panel" aria-label="Main">
+        <ul>
+          {
+            nav.map((item) => (
+              <li>
+                <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <Button href="/contact" size="lg">Get in touch</Button>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: var(--border-width) solid var(--color-border);
+    background: rgb(255 255 255 / 0.92);
+    backdrop-filter: saturate(1.4) blur(10px);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    min-height: var(--header-height);
+  }
+
+  .site-header__logo {
+    flex-shrink: 0;
+  }
+
+  .site-nav {
+    display: none;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .site-nav__list {
+    display: flex;
+    gap: var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .site-nav__link {
+    position: relative;
+    padding-block: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .site-nav__link:hover {
+    color: var(--color-link);
+  }
+
+  .site-nav__link[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    inset: auto 0 -2px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--teal-600);
+  }
+
+  .mobile-nav__toggle {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-nav__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-nav[open] .mobile-nav__toggle {
+    background: var(--color-bg-subtle);
+  }
+
+  .mobile-nav__panel {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-6) var(--gutter) var(--space-8);
+    border-bottom: var(--border-width) solid var(--color-border);
+    background: var(--color-bg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobile-nav__panel ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  .mobile-nav__panel a:not(.btn) {
+    display: block;
+    padding-block: var(--space-3);
+    border-bottom: var(--border-width) solid var(--color-border);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-medium);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .mobile-nav__panel a[aria-current='page'] {
+    color: var(--color-link);
+  }
+
+  @media (min-width: 52rem) {
+    .site-nav {
+      display: flex;
+    }
+
+    .mobile-nav {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,50 @@
+---
+interface Props {
+  /** default: white. subtle: light grey. tint: light sky. brand: logo blue. inverse: navy. */
+  tone?: 'default' | 'subtle' | 'tint' | 'brand' | 'inverse';
+  width?: 'narrow' | 'default' | 'wide';
+  id?: string;
+  class?: string;
+}
+
+const { tone = 'default', width = 'default', id, class: className } = Astro.props;
+---
+
+<section id={id} class:list={['section', `section--${tone}`, className]}>
+  <div class:list={['container', width !== 'default' && `container--${width}`]}>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--section-space);
+  }
+
+  .section--subtle {
+    background: var(--color-bg-subtle);
+  }
+
+  .section--tint {
+    background: var(--color-bg-tint);
+  }
+
+  .section--brand {
+    background: var(--color-bg-brand);
+    color: var(--color-text-on-brand);
+    --color-text-muted: var(--navy-800);
+    --color-accent: var(--navy-900);
+    --color-link: var(--navy-900);
+    --color-link-hover: var(--navy-950);
+  }
+
+  .section--inverse {
+    background: var(--color-bg-inverse);
+    color: var(--color-text-inverse);
+    --color-text-muted: var(--color-text-inverse-muted);
+    --color-accent: var(--teal-300);
+    --color-link: var(--sky-200);
+    --color-link-hover: var(--white);
+    --color-border: var(--navy-700);
+  }
+</style>

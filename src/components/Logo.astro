@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import horizontal from '../assets/brand/logo-horizontal.png';
+import horizontalWhite from '../assets/brand/logo-horizontal-white.png';
+import mark from '../assets/brand/mark-color.png';
+import stacked from '../assets/brand/logo-color.png';
+
+interface Props {
+  /** horizontal: header/footer lockup. stacked: hero/OG use. mark: icon only. */
+  variant?: 'horizontal' | 'stacked' | 'mark';
+  /** Use the white lockup on dark (navy) backgrounds. */
+  inverse?: boolean;
+  /** Rendered height in px. */
+  height?: number;
+  class?: string;
+}
+
+const { variant = 'horizontal', inverse = false, height = 36, class: className } = Astro.props;
+
+const src =
+  variant === 'mark' ? mark : variant === 'stacked' ? stacked : inverse ? horizontalWhite : horizontal;
+const width = Math.round((src.width / src.height) * height);
+---
+
+<Image
+  src={src}
+  alt="CloudsInSight"
+  width={width}
+  height={height}
+  densities={[1, 2]}
+  loading="eager"
+  class={className}
+/>

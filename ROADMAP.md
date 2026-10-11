@@ -242,10 +242,10 @@ Potential initial topics already discussed:
 
 ## Design
 
-* [ ] Define basic CloudsInSight visual identity.
-* [ ] Define typography.
-* [ ] Define color palette.
-* [ ] Define reusable page/component patterns.
+* [x] Define basic CloudsInSight visual identity (see [`docs/design-system.md`](docs/design-system.md)).
+* [x] Define typography.
+* [x] Define color palette.
+* [x] Define reusable page/component patterns.
 * [ ] Determine appropriate use of Azure/architecture diagrams.
 * [ ] Avoid unnecessary stock imagery and visual clutter.
 

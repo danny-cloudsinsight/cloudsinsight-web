@@ -1,0 +1,39 @@
+---
+interface Props {
+  type?: 'note' | 'tip' | 'warning' | 'danger';
+  title?: string;
+}
+
+const { type = 'note', title } = Astro.props;
+const defaults = { note: 'Note', tip: 'Tip', warning: 'Watch out', danger: 'Important' };
+---
+
+<aside class:list={['callout', `callout--${type}`]}>
+  <p class="callout__title">{title ?? defaults[type]}</p>
+  <div class="callout__body"><slot /></div>
+</aside>
+
+<style>
+  .callout {
+    padding: var(--space-4) var(--space-5);
+    border-left: 4px solid var(--callout-fg);
+    border-radius: var(--radius-sm) var(--radius-md) var(--radius-md) var(--radius-sm);
+    background: var(--callout-bg);
+  }
+
+  .callout--note { --callout-bg: var(--color-info-bg); --callout-fg: var(--color-info-fg); }
+  .callout--tip { --callout-bg: var(--color-success-bg); --callout-fg: var(--color-success-fg); }
+  .callout--warning { --callout-bg: var(--color-warning-bg); --callout-fg: var(--color-warning-fg); }
+  .callout--danger { --callout-bg: var(--color-danger-bg); --callout-fg: var(--color-danger-fg); }
+
+  .callout__title {
+    margin-bottom: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--callout-fg);
+  }
+
+  .callout__body > :global(* + *) {
+    margin-top: var(--space-3);
+  }
+</style>
